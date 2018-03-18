@@ -6,7 +6,7 @@ import PaymentScreen from './src/screens/PaymentScreen';
 export default class App extends React.Component {
   render() {
     return (
-      <PaymentScreen />
+      <HomeTabs />
     );
   }
 }
