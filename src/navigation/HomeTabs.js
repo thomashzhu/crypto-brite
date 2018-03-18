@@ -30,7 +30,7 @@ AccountTabIcon.propTypes = {
 };
 
 export default TabNavigator({
-  events: {
+  allEvents: {
     screen: EventsModal,
     navigationOptions: {
       tabBarLabel: 'Events',
@@ -45,7 +45,7 @@ export default TabNavigator({
     },
   },
 }, {
-  initialRouteName: 'events',
+  initialRouteName: 'allEvents',
   tabBarPosition: 'bottom',
   animationEnabled: Platform.OS !== 'ios',
   swipeEnabled: Platform.OS !== 'ios',

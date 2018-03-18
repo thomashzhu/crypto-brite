@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, SafeAreaView, Platform, NativeModules, Dimensions, TouchableOpacity, Text, View, AsyncStorage, DeviceEventEmitter } from 'react-native';
 import QRCode from 'react-native-qrcode-svg';
 import PropTypes from 'prop-types';
-
+import { NavigationActions } from 'react-navigation';
 import ModalHeader from '../components/common/ModalHeader';
 
 class QRCodeScreen extends Component {

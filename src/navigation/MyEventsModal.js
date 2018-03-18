@@ -5,7 +5,7 @@ import PaymentScreen from '../screens/PaymentScreen';
 import QRCodeScreen from '../screens/QRCodeScreen';
 
 export default StackNavigator({
-  myEvents: {
+  events: {
     screen: MyEventsStack,
   },
   payment: {
