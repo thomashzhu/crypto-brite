@@ -80,7 +80,7 @@ export default class componentName extends Component {
   async postPayment() {
 
     var details = {
-      'amount': 0.1,
+      'amount': 0.002,
     }
 
     var formBody = []

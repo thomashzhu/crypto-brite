@@ -6,7 +6,7 @@
       "name": "Selena Live Tribute Concert",
       "type": "Concert",
       "capacity": 500,
-      "price": 50,
+      "price": ".002 DASH",
       "description": "We love Selena",
       "venue": {
         "date": "Saturday, March 14, 2018",
@@ -26,7 +26,7 @@
       "name": "Rachel Garlin in Concert",
       "type": "Concert",
       "capacity": 500,
-      "price": 50,
+      "price": ".002 DASH",
       "description": "An evening with singer-songwriter Rachel Garlin.",
       "venue": {
         "date": "Friday, May 11, 2018",
