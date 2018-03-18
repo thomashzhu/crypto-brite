@@ -16,14 +16,33 @@ export default class componentName extends Component {
   }
 
   async createPayment() {
+
+    var details = {
+      'amount': 0.1,
+    }
+
+    var formBody = []
+
+    for (var property in details) {
+      var encodedKey = encodeURIComponent(property);
+      var encodedValue = encodeURIComponent(details[property]);
+      
+      formBody.push(encodedKey + "=" + encodedValue);
+    }
+
+    formBody = formBody.join("&");
+
     try {
       let response = await fetch(`http://localhost:3000/create/payment`, {
-        method: 'GET',
+        method: 'POST ',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
         },
+        body: formBody,
       });
 
+
+      
       let responseJSON = null
 
       if (response.status === 200) {
