@@ -4,7 +4,6 @@ import { SimpleLineIcons } from '@expo/vector-icons';
 import { Button } from 'react-native-elements';
 import MapView from 'react-native-maps';
 
-
 export default class App extends React.Component {
   static navigationOptions = {
     title: 'EVENT',

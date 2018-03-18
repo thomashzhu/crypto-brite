@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {  View, Text, StyleSheet, Alert, Image } from 'react-native';
+import {  SafeAreaView, Platform, NativeModules, View, Text, StyleSheet, Alert, Image, TouchableOpacity } from 'react-native';
+import ModalHeader from '../components/common/ModalHeader';
 
 export default class componentName extends Component {
 
@@ -135,31 +136,50 @@ export default class componentName extends Component {
     const { payment, isPaymentLoading } = this.state 
  
     return (
-      <View style={styles.container}>
-      {!isPaymentLoading &&
-      <View>
-        <Image 
-          source={{uri: payment["payment"].qrcode_url }}
-          style={{
-            width: 300,
-            height: 300,
-          }}
+      <SafeAreaView style={styles.safeAreaView}>
+        <ModalHeader
+        headerLeft={() => (
+          <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+            <Text style={styles.headerButton}>Close</Text>
+          </TouchableOpacity>
+        )}
+        title="QR Code"
+        headerRight={() => (
+          <TouchableOpacity onPress={() => {}}>
+            <Text style={styles.headerButton}></Text>
+          </TouchableOpacity>
+        )}
         />
 
-        <Text> Address: {payment["payment"].address} </Text>
-        <Text> Amount: {payment["payment"].amount}</Text>
+        <View style={styles.container}>
+          {!isPaymentLoading &&
+          <View>
+            <Image 
+              source={{uri: payment["payment"].qrcode_url }}
+              style={{
+                width: 300,
+                height: 300,
+              }}
+            />
+
+            <Text> Address: {payment["payment"].address} </Text>
+            <Text> Amount: {payment["payment"].amount}</Text>
+            </View>
+          }
         </View>
-      }
-      </View>
+      </SafeAreaView>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  safeAreaView: {
+    flex: 1,
+    paddingTop: Platform.OS === 'ios' ? 0 : NativeModules.StatusBarManager.HEIGHT,
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-  }
+  },
 });
-
