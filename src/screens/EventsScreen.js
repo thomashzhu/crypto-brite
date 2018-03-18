@@ -6,7 +6,7 @@ import EventCard from '../components/EventCard';
 
 class EventsScreen extends Component {
   static navigationOptions = {
-    title: '',
+    title: 'CRYPTO BRITE',
     headerStyle: {
       backgroundColor: '#E8787B',
       borderBottomWidth: 0,
@@ -14,11 +14,11 @@ class EventsScreen extends Component {
     headerTintColor: '#FFF',
   };
 
-  renderEvent = ({ post, index }) => {
+  renderEvent = ({ event, index }) => {
     if (index >= 1) {
       return (
         <EventCard
-          event={post}
+          event={event}
           navigation={this.props.navigation}
         />
       );
@@ -44,7 +44,7 @@ class EventsScreen extends Component {
     <FlatList
       data={[{}, {}, {}, {}, {}, {}, {}]}
       keyExtractor={(event, index) => index}
-      renderItem={({ item: post, index }) => this.renderEvent({ post, index })}
+      renderItem={({ item: event, index }) => this.renderEvent({ event, index })}
     />
   );
 }
