@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Dimensions, View, Image, Text, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
+import { StyleSheet, Dimensions, Platform, View, Image, Text, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
 import { SimpleLineIcons } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
 
@@ -11,59 +11,73 @@ class EventCard extends Component {
     navigate('detailEvent', { event });
   }
 
-  render = () => (
-    <View style={styles.container}>
-      <TouchableWithoutFeedback
-        style={styles.imageContainer}
-        onPress={this.onEventClick}
-      >
-        <View>
-          <Image
-            style={styles.image}
-            source={{ uri: 'https://static.pexels.com/photos/154147/pexels-photo-154147.jpeg' }}
-          />
+  render = () => {
+    const { event } = this.props;
+    const {
+      image, name, description, venue,
+    } = event;
+    const { date: venueDateString, name: venueName } = venue;
+    const venueDate = new Date(venueDateString);
 
-          <View style={styles.buttonContainer}>
-            <TouchableOpacity>
-              <View style={styles.circleButton}>
-                <SimpleLineIcons
-                  name="share"
-                  size={24}
-                />
-              </View>
-            </TouchableOpacity>
+    const MONTH_NAMES = [
+      'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN',
+      'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC',
+    ];
 
-            <TouchableOpacity>
-              <View style={styles.circleButton}>
-                <SimpleLineIcons
-                  name="heart"
-                  size={24}
-                />
-              </View>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </TouchableWithoutFeedback>
-
-      <TouchableWithoutFeedback>
-        <View
-          style={styles.eventText}
+    return (
+      <View style={styles.container}>
+        <TouchableWithoutFeedback
+          style={styles.imageContainer}
           onPress={this.onEventClick}
         >
-          <View style={styles.dateText}>
-            <Text style={styles.monthText}>MAR</Text>
-            <Text style={styles.dayText}>17</Text>
-          </View>
+          <View>
+            <Image
+              style={styles.image}
+              source={{ uri: image }}
+            />
 
-          <View style={styles.eventInfo}>
-            <Text style={styles.eventName}>SF Hacks 2018</Text>
-            <Text style={styles.eventVenue}>SFSU</Text>
-            <Text style={styles.eventDescription}>Coding all the living long days...</Text>
+            <View style={styles.buttonContainer}>
+              <TouchableOpacity>
+                <View style={styles.circleButton}>
+                  <SimpleLineIcons
+                    name="share"
+                    size={24}
+                  />
+                </View>
+              </TouchableOpacity>
+
+              <TouchableOpacity>
+                <View style={styles.circleButton}>
+                  <SimpleLineIcons
+                    name="heart"
+                    size={24}
+                  />
+                </View>
+              </TouchableOpacity>
+            </View>
           </View>
-        </View>
-      </TouchableWithoutFeedback>
-    </View>
-  );
+        </TouchableWithoutFeedback>
+
+        <TouchableWithoutFeedback>
+          <View
+            style={styles.eventText}
+            onPress={this.onEventClick}
+          >
+            <View style={styles.dateText}>
+              <Text style={styles.monthText}>{MONTH_NAMES[venueDate.getMonth()]}</Text>
+              <Text style={styles.dayText}>{venueDate.getDate()}</Text>
+            </View>
+
+            <View style={styles.eventInfo}>
+              <Text style={styles.eventName}>{name}</Text>
+              <Text style={styles.eventVenue}>{venueName}</Text>
+              <Text style={styles.eventDescription}>{description}</Text>
+            </View>
+          </View>
+        </TouchableWithoutFeedback>
+      </View>
+    );
+  };
 }
 
 EventCard.propTypes = {
@@ -98,7 +112,7 @@ const styles = StyleSheet.create({
     height: 56,
     paddingRight: 0,
     position: 'absolute',
-    bottom: -28,
+    bottom: Platform.OS === 'ios' ? -28 : 16,
     right: padding,
   },
   circleButton: {
@@ -114,7 +128,7 @@ const styles = StyleSheet.create({
   },
   eventText: {
     flexDirection: 'row',
-    marginTop: 32,
+    marginTop: Platform.OS === 'ios' ? 32 : 16,
     height: 56,
   },
   dateText: {
