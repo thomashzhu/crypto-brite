@@ -33,17 +33,17 @@ export default class componentName extends Component {
     formBody = formBody.join("&");
 
     try {
-      let response = await fetch(`http://localhost:3000/api/payment`, {
-        method: 'POST ',
+      let response = await fetch(`https://brite-payment.herokuapp.com/api/payment`, {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
         },
         body: formBody,
       });
 
-
-      
       let responseJSON = null
+      
+      console.log(response.status)
 
       if (response.status === 200) {
         responseJSON = await response.json();
