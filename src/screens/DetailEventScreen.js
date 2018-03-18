@@ -177,14 +177,12 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     marginRight: 15,
   },
-  
-
   // about event end
 
   locationContainer: {
     flexGrow: 2,
     width: '100%',
-    height: 500,    
+    height: 400,    
   },
   locationTitleStyle: {
     fontSize: 15,
