@@ -29,33 +29,42 @@ class EventCard extends Component {
   }
 
   onFavoriteButtonPress = async () => {
-    const { isFavorited } = this.state;
-    const { event, onFavoriteButtonPressEmit } = this.props;
+    const { navigation, event } = this.props;
+    const { navigate } = navigation;
 
-    try {
-      event.isFavorited = !isFavorited;
-      if (!isFavorited) {
-        await AsyncStorage.setItem(event.id, JSON.stringify(event));
+    if (event.transaction) {
+      if (event.transaction.isConfirmed) {
+        navigate('qrCode', { event });
       } else {
-        await AsyncStorage.removeItem(event.id);
+        navigate('payment', { event });
       }
-      onFavoriteButtonPressEmit();
-    } catch (error) {
-      // Error saving data
-    }
+    } else {
+      const { isFavorited } = this.state;
+      const { onFavoriteButtonPressEmit } = this.props;
 
-    this.setState({ isFavorited: !isFavorited });
+      try {
+        event.isFavorited = !isFavorited;
+        if (!isFavorited) {
+          await AsyncStorage.setItem(event.id, JSON.stringify(event));
+        } else {
+          await AsyncStorage.removeItem(event.id);
+        }
+        onFavoriteButtonPressEmit();
+      } catch (error) {
+        // Error saving data
+      }
+
+      this.setState({ isFavorited: !isFavorited });
+    }
   }
 
   renderCustomActionButton = () => {
     const { event } = this.props;
 
-    // console.log("TRANSACTION", event.transaction);
-
     if (event.transaction) {
       if (!event.transaction.isConfirmed) {
         return (
-          <TouchableOpacity onPress={() => {}}>
+          <TouchableOpacity onPress={this.onFavoriteButtonPress}>
             <View style={styles.circleButton}>
               <SimpleLineIcons
                 name="wallet"
@@ -66,7 +75,7 @@ class EventCard extends Component {
         );
       } else {
         return (
-          <TouchableOpacity onPress={() => {}}>
+          <TouchableOpacity onPress={this.onFavoriteButtonPress}>
             <View style={styles.circleButton}>
               <SimpleLineIcons
                 name="camera"
@@ -117,14 +126,14 @@ class EventCard extends Component {
             />
 
             <View style={styles.buttonContainer}>
-              <TouchableOpacity>
+              {/* <TouchableOpacity>
                 <View style={styles.circleButton}>
                   <SimpleLineIcons
                     name="share"
                     size={24}
                   />
                 </View>
-              </TouchableOpacity>
+              </TouchableOpacity> */}
 
               {this.renderCustomActionButton()}
             </View>
@@ -182,7 +191,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    width: 120,
+    width: 72,
     height: 56,
     paddingRight: 0,
     position: 'absolute',

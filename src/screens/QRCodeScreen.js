@@ -6,20 +6,6 @@ import { NavigationActions } from 'react-navigation';
 import ModalHeader from '../components/common/ModalHeader';
 
 class QRCodeScreen extends Component {
-  async componentWillMount() {
-    const { event } = this.props.navigation.state.params;
-    try {
-
-      event.transaction = {
-        isConfirmed: false,
-      };
-      await AsyncStorage.setItem(event.id, JSON.stringify(event));
-      DeviceEventEmitter.emit('setMyEventsUpdated');
-    } catch (error) {
-      // Error saving data
-    }
-  }
-
   render = () => {
     const { event } = this.props.navigation.state.params;
     return(
