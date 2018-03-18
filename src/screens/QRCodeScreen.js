@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, SafeAreaView, Platform, NativeModules, Dimensions, TouchableOpacity, Text, View, AsyncStorage, DeviceEventEmitter } from 'react-native';
+import { ImageBackground, StyleSheet, SafeAreaView, Platform, NativeModules, Dimensions, TouchableOpacity, Text, View, AsyncStorage, DeviceEventEmitter } from 'react-native';
 import QRCode from 'react-native-qrcode-svg';
 import PropTypes from 'prop-types';
 import { NavigationActions } from 'react-navigation';
@@ -9,6 +9,7 @@ class QRCodeScreen extends Component {
   async componentWillMount() {
     const { event } = this.props.navigation.state.params;
     try {
+
       event.transaction = {
         isConfirmed: false,
       };
@@ -19,32 +20,67 @@ class QRCodeScreen extends Component {
     }
   }
 
-  render = () => (
+  render = () => {
+    const { event } = this.props.navigation.state.params;
+    return(
+
     <SafeAreaView style={styles.safeAreaView}>
+
+    <ImageBackground 
+      source={{uri: event.image }}
+      style={{
+        width: '100%', 
+        height: '100%'
+      }}
+    >
+    
       <ModalHeader
         headerLeft={() => (
           <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
             <Text style={styles.headerButton}>Close</Text>
           </TouchableOpacity>
         )}
-        title="QR Code"
+        title="Ticket"
         headerRight={() => (
           <TouchableOpacity onPress={() => {}}>
             <Text style={styles.headerButton}>Share</Text>
           </TouchableOpacity>
         )}
         />
-    <View style={styles.qrCodeContainer}>
-      <QRCode
-        size={size}
-        value="sfhacks"
-        // logo={{ uri: "" }}
-        logoSize={size * 0.15}
-        logoBackgroundColor="transparent"
-      />
-      </View>
+    <View style={styles.ticketContainer}>
+
+        <QRCode
+          size={size}
+          value="sfhacks"
+          style={styles.qrCode}
+          // logo={{ uri: "" }}
+          logoSize={size * 0.15}
+          logoBackgroundColor="transparent"
+        />
+
+        <View style={styles.infoContainer}>
+          <Text style={styles.labelText}> Name </Text>
+          <Text style={styles.infoText}> Ryan Liszewski </Text>
+
+          <Text style={styles.labelText}> Event </Text>
+          <Text style={styles.infoText}> {event.name}  </Text>
+
+           <Text style={styles.labelText}> Time </Text>
+
+          <Text style={styles.labelText}> Date </Text>
+          <Text style={styles.infoText}> {event.venue.date} </Text>
+
+          <Text style={styles.labelText}> Location </Text>
+          <Text style={styles.infoText}>{event.venue.address} </Text>
+        
+        </View>
+
+    </View>
+
+      </ImageBackground> 
     </SafeAreaView>
-  );
+    );
+  }
 }
 
 QRCodeScreen.propTypes = {
@@ -54,7 +90,7 @@ QRCodeScreen.propTypes = {
 };
 
 const { width, height } = Dimensions.get('window');
-const size = Math.min(width, height) * 0.7;
+const size = Math.min(width, height) * 0.9;
 
 const styles = StyleSheet.create({
   safeAreaView: {
@@ -66,10 +102,34 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: 'bold',
   },
-  qrCodeContainer: {
+
+  qrCode: {
+
+  },
+
+  infoContainer: {
+    marginTop: 10,
+    backgroundColor: '#fff',
+    width: size,
+    borderRadius: 10,
+  },
+
+  ticketContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+
+  labelText: {
+    color: '#7f7f7f',
+    fontSize: 12,
+    padding: 5,
+  },
+
+  infoText: {
+    fontSize: 14,
+    paddingBottom: 10,
+    paddingLeft: 5,
   }
 });
 

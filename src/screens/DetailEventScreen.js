@@ -26,7 +26,7 @@ export default class App extends React.Component {
 
   onPurchaseButtonPress = async () => {
     const { event } = this.props.navigation.state.params;
-    this.props.navigation.navigate('payment', { event });
+    this.props.navigation.navigate('qrCode', { event });
   }
 
   renderTicketButton = () => {
