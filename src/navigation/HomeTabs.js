@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { SimpleLineIcons } from '@expo/vector-icons';
 
 import EventsModal from './EventsModal';
+import TicketsScreen from '../screens/TicketsScreen';
 import MyEventsModal from './MyEventsModal';
 
 const EventsTabIcon = ({ tintColor }) => (
@@ -15,6 +16,17 @@ const EventsTabIcon = ({ tintColor }) => (
   />
 );
 EventsTabIcon.propTypes = {
+  tintColor: PropTypes.string.isRequired,
+};
+
+const TicketsTabIcon = ({ tintColor }) => (
+  <SimpleLineIcons
+    name="handbag"
+    color={tintColor}
+    size={Platform.OS === 'ios' ? 22 : 22}
+  />
+);
+TicketsTabIcon.propTypes = {
   tintColor: PropTypes.string.isRequired,
 };
 
@@ -37,10 +49,17 @@ export default TabNavigator({
       tabBarIcon: EventsTabIcon,
     },
   },
+  tickets: {
+    screen: TicketsScreen,
+    navigationOptions: {
+      tabBarLabel: 'Tickets',
+      tabBarIcon: TicketsTabIcon,
+    },
+  },
   myEvents: {
     screen: MyEventsModal,
     navigationOptions: {
-      tabBarLabel: 'Account',
+      tabBarLabel: 'Favorites',
       tabBarIcon: AccountTabIcon,
     },
   },

@@ -146,7 +146,7 @@ export default class componentName extends Component {
         title="QR Code"
         headerRight={() => (
           <TouchableOpacity onPress={() => {}}>
-            <Text style={styles.headerButton}></Text>
+            <Text style={[styles.headerButton, { color: '#FFF' }]}>Close</Text>
           </TouchableOpacity>
         )}
         />
