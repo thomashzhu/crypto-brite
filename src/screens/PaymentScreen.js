@@ -15,7 +15,6 @@ export default class componentName extends Component {
 
   componentDidMount(){
     this.postPayment()  
-    this._setContent()
   }
 
   _setContent() {

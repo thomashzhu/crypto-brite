@@ -36,7 +36,7 @@ export default class App extends React.Component {
     if (event.transaction && event.transaction.isConfirmed) {
       return navigation.navigate('qrCode', { event });
     } else {
-      return navigation.navigate('payment');
+      return navigation.navigate('payment', { event });
     }
   }
 
