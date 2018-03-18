@@ -8,7 +8,7 @@ class EventCard extends Component {
     const { navigation, event } = this.props;
     const { navigate } = navigation;
 
-    navigate('qrCode', { event });
+    navigate('detailEvent', { event });
   }
 
   render = () => (

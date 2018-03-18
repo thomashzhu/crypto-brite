@@ -5,6 +5,14 @@ import MapView from 'react-native-maps';
 
 
 export default class App extends React.Component {
+  static navigationOptions = {
+    title: 'EVENT',
+    headerStyle: {
+      backgroundColor: '#E8787B',
+      borderBottomWidth: 0,
+    },
+    headerTintColor: '#FFF',
+  };
 
   constructor(props){
     super(props);
