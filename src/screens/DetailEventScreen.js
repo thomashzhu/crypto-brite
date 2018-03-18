@@ -16,7 +16,6 @@ export default class App extends React.Component {
 
   constructor(props){
     super(props);
-
     this.state = {
       screen: null,
       description: ''
@@ -24,12 +23,15 @@ export default class App extends React.Component {
   }
 
   render() {
+    const event = this.props.navigation.state.params.event;
+    console.log(event);
+
     return (
       <ScrollView style={styles.mainContainer}>
 
         <View style={styles.bannerImageContainer}>
           <Image
-            source={{ uri: 'https://static.pexels.com/photos/154147/pexels-photo-154147.jpeg' }}
+            source={{ uri: event.image }}
               style={{
                 flex: 1,
                 height: 200,
@@ -41,8 +43,8 @@ export default class App extends React.Component {
         {/* bannerImageContainer End */}
 
         <View style={styles.generalInformationContainer}>
-          <Text style={styles.generalInformationHeaderTitleStyle}>SELENA Live Tribute Concert - Free with RSVP</Text>
-          <Text style={styles.byTextStyle}>by Social Group - Dolce Group</Text>
+          <Text style={styles.generalInformationHeaderTitleStyle}>{event.name}</Text>
+          <Text style={styles.byTextStyle}>{event.type}</Text>
           
           <View style={styles.detailContainer}>
             <SimpleLineIcons 
@@ -52,8 +54,8 @@ export default class App extends React.Component {
 
             </SimpleLineIcons>
             <View style={styles.subDetailColumnContainer}>
-              <Text style={styles.detailMainText}>Saturday, March 17</Text>
-              <Text style={styles.detailSubText}>9:30 PM - 1:30 AM PDT</Text>
+              <Text style={styles.detailMainText}>{event.venue['date']}</Text>
+              <Text style={styles.detailSubText}>{event.venue['time'].start} - {event.venue['time'].end}</Text>
             </View>
           </View>
 
@@ -65,9 +67,8 @@ export default class App extends React.Component {
 
             </SimpleLineIcons>
             <View style={styles.subDetailColumnContainer}>
-              <Text style={styles.detailMainText}>Love and Propaganda</Text>
-              <Text style={styles.detailSubText}>53 Campton PI, San Francisco, 
-              CA 94108</Text>
+              <Text style={styles.detailMainText}>{event.venue.name}</Text>
+              <Text style={styles.detailSubText}>{event.venue.address}</Text>
             </View>
           </View>
 
@@ -79,7 +80,7 @@ export default class App extends React.Component {
 
             </SimpleLineIcons>
             <View style={styles.subDetailColumnContainer}>
-              <Text style={styles.detailMainText}>Free</Text>
+              <Text style={styles.detailMainText}>${event.price}</Text>
               <Text style={styles.detailSubText}>on Crypto-Brite</Text>
             </View>
           </View>
@@ -93,14 +94,13 @@ export default class App extends React.Component {
             style={styles.descriptionStyle}
             numberOfLines= {4}
             ellipsizeMode='tail'
-            >
-It only took a few short but extremely exciting years for Selena to earn her nickname: "The Mexican Madonna." Bringing a sexy, pop vibe to her performances, Selena was the best-selling Latin star of the '90s, the Grammy-winning Queen of Tejano. Her life was far too short, but now you can revisit her biggest hits, like "Como La Flor," "Amor Prohibido" and "Baila Esta Cumbia," at this tribute concert. Selena lived from April 16th, 1971 - March 31st, 1995</Text>
+            >{event.description}</Text>
         </View>
         {/* aboutEventContainer End */}
 
         <View style={styles.locationContainer}>
           <Text style={styles.locationTitleStyle}>Location</Text>
-          <Text style={styles.locationSubTitleStyle}>Love And Propaganda</Text>
+          <Text style={styles.locationSubTitleStyle}>{event.venue.name}</Text>
           <View style={styles.mapImageContainer}>
             <Image
               source={{ uri: 'http://joomly.net/frontend/web/images/googlemap/map.png' }}
@@ -122,19 +122,19 @@ It only took a few short but extremely exciting years for Selena to earn her nic
 
 const styles = StyleSheet.create({
   mainContainer: {
-    flex: 1,
+    flexGrow: 1,
   },
 
   
   bannerImageContainer: {
-    flexGrow: 1,
+    flex: 1,
     width: '100%',
     height: 200,
   },
   // banner end
 
   generalInformationContainer: {
-    flexGrow: 2,
+    flex: 2,
     width: '100%',
     height: 375,    
   },
@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
   // general information end
 
   aboutEventContainer: {
-    flexGrow: 1,
+    flex: 1,
     justifyContent: 'flex-start',
     width: '100%',
     height: 200,
@@ -188,7 +188,7 @@ const styles = StyleSheet.create({
   // about event end
 
   locationContainer: {
-    flexGrow: 2,
+    flex: 2,
     width: '100%',
     height: 400,    
   },
