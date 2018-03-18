@@ -6,7 +6,7 @@ import EventCard from '../components/EventCard';
 
 class EventsScreen extends Component {
   static navigationOptions = {
-    title: 'My Events',
+    title: 'MY EVENTS',
     headerStyle: {
       backgroundColor: '#E8787B',
       borderBottomWidth: 0,
