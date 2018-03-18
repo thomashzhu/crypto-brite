@@ -46,7 +46,7 @@
       "name": "Mozart to Mendelssohn Concert",
       "type": "Concert",
       "capacity": 500,
-      "price": 50,
+      "price": ".002 DASH",
       "description": "The Mozart to Mendelssohn concert",
       "venue": {
         "date": "Sunday, March 18, 2018",
@@ -66,7 +66,7 @@
       "name": "Shakira Concert Shuttle to SAP Center",
       "type": "Concert",
       "capacity": 500,
-      "price": 50,
+      "price": ".002 DASH",
       "description": "We love Selena",
       "venue": {
         "date": "Thursday, Sep 6, 2018",
@@ -86,7 +86,7 @@
       "name": "Selena Live Tribute Convert",
       "type": "Concert",
       "capacity": 500,
-      "price": 50,
+      "price": ".002 DASH",
       "description": "We love Selena",
       "venue": {
         "date": "Saturday, March 24, 2018",
@@ -106,7 +106,7 @@
       "name": "Selena Live Tribute Convert",
       "type": "Theater",
       "capacity": 500,
-      "price": 50,
+      "price": ".002 DASH",
       "description": "We love Selena",
       "venue": {
         "date": "Saturday, March 18, 2018",
@@ -126,7 +126,7 @@
       "name": "Selena Live Tribute Convert",
       "type": "Concert",
       "capacity": 500,
-      "price": 50,
+      "price":".002 DASH",
       "description": "We love Selena",
       "venue": {
         "date": "Saturday, March 17, 2018",

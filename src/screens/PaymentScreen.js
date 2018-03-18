@@ -21,6 +21,10 @@ export default class componentName extends Component {
     Clipboard.setString(this.state.payment["payment"].address);
   }
 
+  _setLinkContent() {
+    Clipboard.setString(this.state.payment["payment"].status_url);
+  }
+
   async getPaymentStatus() {  
 
     var details = {
@@ -190,6 +194,15 @@ export default class componentName extends Component {
                 >
                   <View style={styles.button}>
                     <Text style={styles.buttonText}> Copy Address </Text>
+                  </View>
+                </TouchableOpacity>
+
+                 <TouchableOpacity 
+                  style={styles.buttonContainer}
+                  onPress={this._setLinkContent()}
+                >
+                  <View style={styles.button}>
+                    <Text style={styles.buttonText}> Copy Status URL </Text>
                   </View>
                 </TouchableOpacity>
               </View>

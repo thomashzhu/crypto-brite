@@ -52,6 +52,7 @@ class QRCodeScreen extends Component {
           <Text style={styles.infoText}> {event.name}  </Text>
 
            <Text style={styles.labelText}> Time </Text>
+           <Text style={styles.infoText}> {event.venue.time.start} - {event.venue.time.end} </Text>
 
           <Text style={styles.labelText}> Date </Text>
           <Text style={styles.infoText}> {event.venue.date} </Text>
