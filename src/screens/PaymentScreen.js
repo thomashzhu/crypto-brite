@@ -17,12 +17,8 @@ export default class componentName extends Component {
     this.postPayment()  
   }
 
-  _setContent() {
+  _setContent = () => {
     Clipboard.setString(this.state.payment["payment"].address);
-  }
-
-  _setLinkContent() {
-    Clipboard.setString(this.state.payment["payment"].status_url);
   }
 
   async getPaymentStatus() {  
@@ -197,14 +193,7 @@ export default class componentName extends Component {
                   </View>
                 </TouchableOpacity>
 
-                 <TouchableOpacity 
-                  style={styles.buttonContainer}
-                  onPress={this._setLinkContent()}
-                >
-                  <View style={styles.button}>
-                    <Text style={styles.buttonText}> Copy Status URL </Text>
-                  </View>
-                </TouchableOpacity>
+                
               </View>
             </View>
           }
