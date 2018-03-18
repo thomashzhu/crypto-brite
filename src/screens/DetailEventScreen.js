@@ -1,7 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Image, TouchableOpacity, AsyncStorage } from 'react-native';
 import { SimpleLineIcons } from '@expo/vector-icons';
-import { Button } from 'react-native-elements'
+import { Button } from 'react-native-elements';
 import MapView from 'react-native-maps';
 
 
@@ -24,6 +24,34 @@ export default class App extends React.Component {
       isPaid: true
     };
   }
+
+  onPurchaseButtonPress = async () => {
+    const { event } = this.props.navigation.state.params;
+    this.props.navigation.navigate('payment', { event });
+  }
+
+  renderTicketButton = () => {
+    const { event } = this.props.navigation.state.params;
+
+    if (event.transaction) {
+      return null;
+    }
+
+    return (
+      <View style={styles.purchaseContainer}>
+        <TouchableOpacity>
+          <Button
+            onPress={this.onPurchaseButtonPress}
+            title='Tickets'
+            color='white'
+            backgroundColor='#E8787B'
+            rounded
+          />
+        </TouchableOpacity>
+      </View>
+    );
+  }
+
 
   render() {
     const event = this.props.navigation.state.params.event;
@@ -119,17 +147,7 @@ export default class App extends React.Component {
           </ScrollView>
           {/* scrollView End */}
 
-          <View style={styles.purchaseContainer}>
-            <TouchableOpacity>
-              <Button
-                // onPress={}
-                title='Tickets'
-                color='white'
-                backgroundColor='#E8787B'
-                rounded='true'
-              />
-            </TouchableOpacity>
-          </View>
+          {this.renderTicketButton()}
 
         </View>
     );

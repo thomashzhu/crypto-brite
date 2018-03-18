@@ -1,14 +1,86 @@
 import React, { Component } from 'react';
-import { StyleSheet, Dimensions, Platform, View, Image, Text, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
+import { StyleSheet, Dimensions, Platform, View, Image, Text, TouchableWithoutFeedback, TouchableOpacity, AsyncStorage, DeviceEventEmitter } from 'react-native';
 import { SimpleLineIcons } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
 
 class EventCard extends Component {
+  constructor(props) {
+    super(props);
+
+    const { event } = props;
+
+    this.state = {
+      isFavorited: event.isFavorited,
+    };
+  }
   onEventClick = () => {
     const { navigation, event } = this.props;
     const { navigate } = navigation;
 
     navigate('detailEvent', { event });
+  }
+
+  onFavoriteButtonPress = async () => {
+    const { isFavorited } = this.state;
+    const { event, onFavoriteButtonPressEmit } = this.props;
+
+    try {
+      event.isFavorited = !isFavorited;
+      if (!isFavorited) {
+        await AsyncStorage.setItem(event.id, JSON.stringify(event));
+      } else {
+        await AsyncStorage.removeItem(event.id);
+      }
+      onFavoriteButtonPressEmit();
+    } catch (error) {
+      // Error saving data
+    }
+
+    this.setState({ isFavorited: !isFavorited });
+  }
+
+  renderCustomActionButton = () => {
+    const { event } = this.props;
+
+    // console.log("TRANSACTION", event.transaction);
+
+    if (event.transaction) {
+      if (!event.transaction.isConfirmed) {
+        return (
+          <TouchableOpacity onPress={() => {}}>
+            <View style={styles.circleButton}>
+              <SimpleLineIcons
+                name="wallet"
+                size={24}
+              />
+            </View>
+          </TouchableOpacity>
+        );
+      } else {
+        return (
+          <TouchableOpacity onPress={() => {}}>
+            <View style={styles.circleButton}>
+              <SimpleLineIcons
+                name="camera"
+                size={24}
+              />
+            </View>
+          </TouchableOpacity>
+        );
+      }
+    } else {
+      return (
+        <TouchableOpacity onPress={this.onFavoriteButtonPress}>
+          <View style={styles.circleButton}>
+            <SimpleLineIcons
+              name="heart"
+              color={this.state.isFavorited ? 'red' : null}
+              size={24}
+            />
+          </View>
+        </TouchableOpacity>
+      );
+    }
   }
 
   render = () => {
@@ -46,14 +118,7 @@ class EventCard extends Component {
                 </View>
               </TouchableOpacity>
 
-              <TouchableOpacity>
-                <View style={styles.circleButton}>
-                  <SimpleLineIcons
-                    name="heart"
-                    size={24}
-                  />
-                </View>
-              </TouchableOpacity>
+              {this.renderCustomActionButton()}
             </View>
           </View>
         </TouchableWithoutFeedback>
@@ -85,6 +150,7 @@ EventCard.propTypes = {
     navigate: PropTypes.func.isRequired,
   }).isRequired,
   event: PropTypes.object.isRequired,
+  onFavoriteButtonPressEmit: PropTypes.func.isRequired,
 };
 
 const padding = 16;

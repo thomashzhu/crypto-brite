@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, FlatList } from 'react-native';
+import { StyleSheet, View, Text, FlatList, DeviceEventEmitter } from 'react-native';
 import PropTypes from 'prop-types';
 
 import EventCard from '../components/common/EventCard';
 
-const data = require('../data.json');
+const DATA = require('../data.json');
 
 class EventsScreen extends Component {
   static navigationOptions = {
@@ -16,12 +16,37 @@ class EventsScreen extends Component {
     headerTintColor: '#FFF',
   };
 
-  renderEvent = ({ event, index }) => {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      events: DATA.events,
+      updatedEvent: null,
+    };
+  }
+
+  componentWillMount() {
+    DeviceEventEmitter.addListener('setEventsUpdated', ({ updatedEvent }) => {
+      this.eventUpdated({ updatedEvent });
+    });
+  }
+
+  eventUpdated = ({ updatedEvent }) => {
+    this.setState({ updatedEvent });
+    this.forceUpdate();
+  }
+
+  renderEvent = ({ item: event, index }) => {
     if (index >= 1) {
+      const { updatedEvent } = this.state;
+      
       return (
         <EventCard
-          event={event}
+          event={updatedEvent && updatedEvent.id === event.id ? updatedEvent : event}
           navigation={this.props.navigation}
+          onFavoriteButtonPressEmit={() => {
+            DeviceEventEmitter.emit('setMyEventsUpdated');
+          }}
         />
       );
     }
@@ -42,13 +67,15 @@ class EventsScreen extends Component {
     );
   };
 
-  render = () => (
-    <FlatList
-      data={data.events}
-      keyExtractor={(event, index) => index}
-      renderItem={({ item: event, index }) => this.renderEvent({ event, index })}
-    />
-  );
+  render() {
+    return (
+      <FlatList
+        data={this.state.events}
+        keyExtractor={(event, index) => index}
+        renderItem={this.renderEvent}
+      />
+    );
+  }
 }
 
 EventsScreen.propTypes = {

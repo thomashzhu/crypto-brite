@@ -11,7 +11,7 @@ const EventsTabIcon = ({ tintColor }) => (
   <SimpleLineIcons
     name="calendar"
     color={tintColor}
-    size={Platform.OS === 'ios' ? 22 : 25}
+    size={Platform.OS === 'ios' ? 22 : 22}
   />
 );
 EventsTabIcon.propTypes = {
@@ -22,7 +22,7 @@ const AccountTabIcon = ({ tintColor }) => (
   <SimpleLineIcons
     name="user"
     color={tintColor}
-    size={Platform.OS === 'ios' ? 22 : 25}
+    size={Platform.OS === 'ios' ? 22 : 22}
   />
 );
 AccountTabIcon.propTypes = {
@@ -30,7 +30,7 @@ AccountTabIcon.propTypes = {
 };
 
 export default TabNavigator({
-  events: {
+  allEvents: {
     screen: EventsModal,
     navigationOptions: {
       tabBarLabel: 'Events',
@@ -45,7 +45,7 @@ export default TabNavigator({
     },
   },
 }, {
-  initialRouteName: 'events',
+  initialRouteName: 'allEvents',
   tabBarPosition: 'bottom',
   animationEnabled: Platform.OS !== 'ios',
   swipeEnabled: Platform.OS !== 'ios',
