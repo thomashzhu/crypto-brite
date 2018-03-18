@@ -24,7 +24,7 @@ const QRCodeScreen = ({ navigation }) => (
     <View style={styles.qrCodeContainer}>
       <QRCode
         size={size}
-        value="Just some string value"
+        value="sfhacks"
         // logo={{ uri: "" }}
         logoSize={size * 0.15}
         logoBackgroundColor="transparent"
