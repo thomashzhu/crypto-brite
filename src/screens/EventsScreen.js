@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text, FlatList } from 'react-native';
 import PropTypes from 'prop-types';
 
-import EventCard from '../components/EventCard';
+import EventCard from '../components/common/EventCard';
 
 class EventsScreen extends Component {
   static navigationOptions = {

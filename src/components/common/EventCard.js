@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { StyleSheet, Dimensions, View, Image, Text, TouchableWithoutFeedback } from 'react-native';
+import { StyleSheet, Dimensions, View, Image, Text, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
+import { SimpleLineIcons } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
 
 class EventCard extends Component {
@@ -16,10 +17,32 @@ class EventCard extends Component {
         style={styles.imageContainer}
         onPress={this.onEventClick}
       >
-        <Image
-          style={styles.image}
-          source={{ uri: 'https://static.pexels.com/photos/154147/pexels-photo-154147.jpeg' }}
-        />
+        <View>
+          <Image
+            style={styles.image}
+            source={{ uri: 'https://static.pexels.com/photos/154147/pexels-photo-154147.jpeg' }}
+          />
+
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity>
+              <View style={styles.circleButton}>
+                <SimpleLineIcons
+                  name="share"
+                  size={24}
+                />
+              </View>
+            </TouchableOpacity>
+
+            <TouchableOpacity>
+              <View style={styles.circleButton}>
+                <SimpleLineIcons
+                  name="heart"
+                  size={24}
+                />
+              </View>
+            </TouchableOpacity>
+          </View>
+        </View>
       </TouchableWithoutFeedback>
 
       <TouchableWithoutFeedback>
@@ -67,9 +90,31 @@ const styles = StyleSheet.create({
     height: (width - 2 * padding) / 2,
     resizeMode: 'cover',
   },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 120,
+    height: 56,
+    paddingRight: 0,
+    position: 'absolute',
+    bottom: -28,
+    right: padding,
+  },
+  circleButton: {
+    height: 48,
+    width: 48,
+    borderRadius: 24,
+    borderWidth: 1,
+    borderColor: '#999',
+    backgroundColor: '#FFF',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: 12,
+  },
   eventText: {
     flexDirection: 'row',
-    marginTop: 18,
+    marginTop: 32,
     height: 56,
   },
   dateText: {
