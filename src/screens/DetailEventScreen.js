@@ -1,7 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Image, TouchableOpacity, AsyncStorage } from 'react-native';
 import { SimpleLineIcons } from '@expo/vector-icons';
-import { Button } from 'react-native-elements'
+import { Button } from 'react-native-elements';
 import MapView from 'react-native-maps';
 
 
@@ -23,6 +23,20 @@ export default class App extends React.Component {
       description: '',
       isPaid: true
     };
+  }
+
+  onPurchaseButtonPress = async () => {
+    const { event } = this.props.navigation.state.params;
+    try {
+      event.transaction = {
+        isConfirmed: false,
+      };
+      await AsyncStorage.setItem(event.id, JSON.stringify(event));
+    } catch (error) {
+      // Error saving data
+    }
+
+    this.props.navigation.navigate('payment', { event });
   }
 
   render() {
@@ -122,11 +136,11 @@ export default class App extends React.Component {
           <View style={styles.purchaseContainer}>
             <TouchableOpacity>
               <Button
-                // onPress={}
+                onPress={this.onPurchaseButtonPress}
                 title='Tickets'
                 color='white'
                 backgroundColor='#E8787B'
-                rounded='true'
+                rounded
               />
             </TouchableOpacity>
           </View>

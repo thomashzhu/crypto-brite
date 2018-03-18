@@ -1,7 +1,7 @@
 {
   "events": [
     {
-      "id": 1,
+      "id": "1",
       "image": "https://static.pexels.com/photos/154147/pexels-photo-154147.jpeg",
       "name": "Selena Live Tribute Convert",
       "type": "Concert",
@@ -16,10 +16,11 @@
         },
         "address": "1600 Holloway Avenue, San Francisco, CA 94132",
         "name": "Student Life Center"
-      }
+      },
+      "isFavorited": false
     },
     {
-      "id": 2,
+      "id": "2",
       "image": "https://static.pexels.com/photos/154147/pexels-photo-154147.jpeg",
       "name": "Selena Live Tribute Convert",
       "type": "Concert",
@@ -34,10 +35,11 @@
         },
         "address": "1600 Holloway Avenue, San Francisco, CA 94132",
         "name": "Student Life Center"
-      }
+      },
+      "isFavorited": false
     },
     {
-      "id": 3,
+      "id": "3",
       "image": "https://static.pexels.com/photos/154147/pexels-photo-154147.jpeg",
       "name": "Selena Live Tribute Convert",
       "type": "Concert",
@@ -52,10 +54,11 @@
         },
         "address": "1600 Holloway Avenue, San Francisco, CA 94132",
         "name": "Student Life Center"
-      }
+      },
+      "isFavorited": false
     },
     {
-      "id": 4,
+      "id": "4",
       "image": "https://static.pexels.com/photos/154147/pexels-photo-154147.jpeg",
       "name": "Selena Live Tribute Convert",
       "type": "Concert",
@@ -70,10 +73,11 @@
         },
         "address": "1600 Holloway Avenue, San Francisco, CA 94132",
         "name": "Student Life Center"
-      }
+      },
+      "isFavorited": false
     },
     {
-      "id": 5,
+      "id": "5",
       "image": "https://static.pexels.com/photos/154147/pexels-photo-154147.jpeg",
       "name": "Selena Live Tribute Convert",
       "type": "Concert",
@@ -88,10 +92,11 @@
         },
         "address": "1600 Holloway Avenue, San Francisco, CA 94132",
         "name": "Student Life Center"
-      }
+      },
+      "isFavorited": false
     },
     {
-      "id": 6,
+      "id": "6",
       "image": "https://static.pexels.com/photos/154147/pexels-photo-154147.jpeg",
       "name": "Selena Live Tribute Convert",
       "type": "Concert",
@@ -106,10 +111,11 @@
         },
         "address": "1600 Holloway Avenue, San Francisco, CA 94132",
         "name": "Student Life Center"
-      }
+      },
+      "isFavorited": false
     },
     {
-      "id": 7,
+      "id": "7",
       "image": "https://static.pexels.com/photos/154147/pexels-photo-154147.jpeg",
       "name": "Selena Live Tribute Convert",
       "type": "Concert",
@@ -124,7 +130,8 @@
         },
         "address": "1600 Holloway Avenue, San Francisco, CA 94132",
         "name": "Student Life Center"
-      }
+      },
+      "isFavorited": false
     }
   ]
 }

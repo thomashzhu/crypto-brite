@@ -1,37 +1,52 @@
-import React from 'react';
-import { StyleSheet, SafeAreaView, Platform, NativeModules, Dimensions, TouchableOpacity, Text, View } from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, SafeAreaView, Platform, NativeModules, Dimensions, TouchableOpacity, Text, View, AsyncStorage, DeviceEventEmitter } from 'react-native';
 import QRCode from 'react-native-qrcode-svg';
 import PropTypes from 'prop-types';
 
 import ModalHeader from '../components/common/ModalHeader';
 
-const QRCodeScreen = ({ navigation }) => (
-  <SafeAreaView style={styles.safeAreaView}>
-    <ModalHeader
-      headerLeft={() => (
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Text style={styles.headerButton}>Close</Text>
-        </TouchableOpacity>
-      )}
-      title="QR Code"
-      headerRight={() => (
-        <TouchableOpacity onPress={() => {}}>
-          <Text style={styles.headerButton}>Share</Text>
-        </TouchableOpacity>
-      )}
-    />
+class QRCodeScreen extends Component {
+  async componentWillMount() {
+    const { event } = this.props.navigation.state.params;
+    try {
+      event.transaction = {
+        isConfirmed: true,
+      };
+      await AsyncStorage.setItem(event.id, JSON.stringify(event));
+      DeviceEventEmitter.emit('setMyEventsUpdated');
+    } catch (error) {
+      // Error saving data
+    }
+  }
 
-    <View style={styles.qrCodeContainer}>
-      <QRCode
-        size={size}
-        value="Just some string value"
-        // logo={{ uri: "" }}
-        logoSize={size * 0.15}
-        logoBackgroundColor="transparent"
+  render = () => (
+    <SafeAreaView style={styles.safeAreaView}>
+      <ModalHeader
+        headerLeft={() => (
+          <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+            <Text style={styles.headerButton}>Close</Text>
+          </TouchableOpacity>
+        )}
+        title="QR Code"
+        headerRight={() => (
+          <TouchableOpacity onPress={() => {}}>
+            <Text style={styles.headerButton}>Share</Text>
+          </TouchableOpacity>
+        )}
       />
-    </View>
-  </SafeAreaView>
-);
+
+      <View style={styles.qrCodeContainer}>
+        <QRCode
+          size={size}
+          value="Just some string value"
+          // logo={{ uri: "" }}
+          logoSize={size * 0.15}
+          logoBackgroundColor="transparent"
+        />
+      </View>
+    </SafeAreaView>
+  );
+}
 
 QRCodeScreen.propTypes = {
   navigation: PropTypes.shape({
