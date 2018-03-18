@@ -17,7 +17,15 @@ class EventCard extends Component {
     const { navigation, event } = this.props;
     const { navigate } = navigation;
 
-    navigate('detailEvent', { event });
+    if (event.transaction) {
+      if (event.transaction.isConfirmed) {
+        navigate('qrCode', { event });
+      } else {
+        navigate('payment', { event });
+      }
+    } else {
+      navigate('detailEvent', { event });
+    }
   }
 
   onFavoriteButtonPress = async () => {

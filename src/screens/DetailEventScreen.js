@@ -24,31 +24,20 @@ export default class App extends React.Component {
     };
   }
 
-  onPurchaseButtonPress = async () => {
-    const { event } = this.props.navigation.state.params;
-    this.props.navigation.navigate('qrCode', { event });
-  }
+  // onPurchaseButtonPress = async () => {
+  //   const { event } = this.props.navigation.state.params;
+  //   this.props.navigation.navigate('qrCode', { event });
+  // }
 
-  renderTicketButton = () => {
-    const { event } = this.props.navigation.state.params;
+  onTicketButtonPress = () => {
+    const { navigation } = this.props;
+    const { event } = navigation.state.params;
 
-    if (event.transaction) {
-      return null;
+    if (event.transaction && event.transaction.isConfirmed) {
+      return navigation.navigate('qrCode', { event });
+    } else {
+      return navigation.navigate('payment');
     }
-
-    return (
-      <View style={styles.purchaseContainer}>
-        <TouchableOpacity>
-          <Button
-            onPress={this.onPurchaseButtonPress}
-            title='Tickets'
-            color='white'
-            backgroundColor='#E8787B'
-            rounded
-          />
-        </TouchableOpacity>
-      </View>
-    );
   }
 
 
@@ -146,7 +135,17 @@ export default class App extends React.Component {
           </ScrollView>
           {/* scrollView End */}
 
-          {this.renderTicketButton()}
+          <View style={styles.purchaseContainer}>
+            <TouchableOpacity>
+              <Button
+                onPress={() => this.onTicketButtonPress()}
+                title='Tickets'
+                color='white'
+                backgroundColor='#E8787B'
+                rounded
+              />
+            </TouchableOpacity>
+          </View>
 
         </View>
     );
