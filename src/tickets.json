@@ -1,0 +1,67 @@
+{
+  "tickets": [
+    {
+      "id": "1",
+      "image": "https://static.pexels.com/photos/154147/pexels-photo-154147.jpeg",
+      "name": "Selena Live Tribute Convert",
+      "type": "Concert",
+      "capacity": 500,
+      "price": 50,
+      "description": "We love Selena",
+      "venue": {
+        "date": "Saturday, March 14, 2018",
+        "time": {
+          "start": "21:30",
+          "end": "1:30"
+        },
+        "address": "1600 Holloway Avenue, San Francisco, CA 94132",
+        "name": "Student Life Center"
+      },
+      "transaction": {
+        "isConfirmed": true
+      }
+    },
+    {
+      "id": "2",
+      "image": "https://static.pexels.com/photos/154147/pexels-photo-154147.jpeg",
+      "name": "Selena Live Tribute Convert",
+      "type": "Concert",
+      "capacity": 500,
+      "price": 50,
+      "description": "We love Selena",
+      "venue": {
+        "date": "Saturday, March 19, 2018",
+        "time": {
+          "start": "21:30",
+          "end": "1:30"
+        },
+        "address": "1600 Holloway Avenue, San Francisco, CA 94132",
+        "name": "Student Life Center"
+      },
+      "transaction": {
+        "isConfirmed": false
+      }
+    },
+    {
+      "id": "3",
+      "image": "https://static.pexels.com/photos/154147/pexels-photo-154147.jpeg",
+      "name": "Selena Live Tribute Convert",
+      "type": "Concert",
+      "capacity": 500,
+      "price": 50,
+      "description": "We love Selena",
+      "venue": {
+        "date": "Saturday, March 23, 2018",
+        "time": {
+          "start": "21:30",
+          "end": "1:30"
+        },
+        "address": "1600 Holloway Avenue, San Francisco, CA 94132",
+        "name": "Student Life Center"
+      },
+      "transaction": {
+        "isConfirmed": true
+      }
+    }
+  ]
+}
