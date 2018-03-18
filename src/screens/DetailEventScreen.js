@@ -27,15 +27,6 @@ export default class App extends React.Component {
 
   onPurchaseButtonPress = async () => {
     const { event } = this.props.navigation.state.params;
-    try {
-      event.transaction = {
-        isConfirmed: false,
-      };
-      await AsyncStorage.setItem(event.id, JSON.stringify(event));
-    } catch (error) {
-      // Error saving data
-    }
-
     this.props.navigation.navigate('payment', { event });
   }
 

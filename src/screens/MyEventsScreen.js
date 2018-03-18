@@ -27,6 +27,7 @@ class EventsScreen extends Component {
       this.loadEvents();
     });
 
+    AsyncStorage.clear();
     this.loadEvents();
   }
 
