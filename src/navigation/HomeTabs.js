@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { SimpleLineIcons } from '@expo/vector-icons';
 
 import EventsModal from './EventsModal';
-import TicketsScreen from '../screens/TicketsScreen';
+import TicketsModal from './TicketsModal';
 import MyEventsModal from './MyEventsModal';
 
 const EventsTabIcon = ({ tintColor }) => (
@@ -50,7 +50,7 @@ export default TabNavigator({
     },
   },
   tickets: {
-    screen: TicketsScreen,
+    screen: TicketsModal,
     navigationOptions: {
       tabBarLabel: 'Tickets',
       tabBarIcon: TicketsTabIcon,
