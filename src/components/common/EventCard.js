@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { StyleSheet, Dimensions, Platform, View, Image, Text, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
 import { SimpleLineIcons } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
-import Moment from 'moment';
 
 class EventCard extends Component {
   onEventClick = () => {
