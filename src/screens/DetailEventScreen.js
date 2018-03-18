@@ -125,7 +125,7 @@ export default class App extends React.Component {
                 title='Tickets'
                 color='white'
                 backgroundColor='#E8787B'
-                rounded= 'true'
+                rounded='true'
               />
             </TouchableOpacity>
           </View>
