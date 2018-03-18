@@ -33,7 +33,7 @@ export default class componentName extends Component {
     formBody = formBody.join("&");
 
     try {
-      let response = await fetch(`http://localhost:3000/create/payment`, {
+      let response = await fetch(`http://localhost:3000/api/payment`, {
         method: 'POST ',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
