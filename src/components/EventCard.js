@@ -1,31 +1,54 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, Dimensions, View, Image, Text, TouchableWithoutFeedback } from 'react-native';
+import PropTypes from 'prop-types';
 
-const EventCard = () => (
-  <View style={styles.container}>
-    <TouchableWithoutFeedback style={styles.imageContainer}>
-      <Image
-        style={styles.image}
-        source={{ uri: 'https://cdn-images-1.medium.com/max/2000/1*yw9Mc5GrJtqiQkvhE0SB_w.jpeg' }}
-      />
-    </TouchableWithoutFeedback>
+class EventCard extends Component {
+  onEventClick = () => {
+    const { navigation, event } = this.props;
+    const { navigate } = navigation;
 
-    <TouchableWithoutFeedback>
-      <View style={styles.eventText}>
-        <View style={styles.dateText}>
-          <Text style={styles.monthText}>MAR</Text>
-          <Text style={styles.dayText}>17</Text>
+    navigate('qrCode', { event });
+  }
+
+  render = () => (
+    <View style={styles.container}>
+      <TouchableWithoutFeedback
+        style={styles.imageContainer}
+        onPress={this.onEventClick}
+      >
+        <Image
+          style={styles.image}
+          source={{ uri: 'https://static.pexels.com/photos/154147/pexels-photo-154147.jpeg' }}
+        />
+      </TouchableWithoutFeedback>
+
+      <TouchableWithoutFeedback>
+        <View
+          style={styles.eventText}
+          onPress={this.onEventClick}
+        >
+          <View style={styles.dateText}>
+            <Text style={styles.monthText}>MAR</Text>
+            <Text style={styles.dayText}>17</Text>
+          </View>
+
+          <View style={styles.eventInfo}>
+            <Text style={styles.eventName}>SF Hacks 2018</Text>
+            <Text style={styles.eventVenue}>SFSU</Text>
+            <Text style={styles.eventDescription}>Coding all the living long days...</Text>
+          </View>
         </View>
+      </TouchableWithoutFeedback>
+    </View>
+  );
+}
 
-        <View style={styles.eventInfo}>
-          <Text style={styles.eventName}>SF Hacks 2018</Text>
-          <Text style={styles.eventVenue}>SFSU</Text>
-          <Text style={styles.eventDescription}>Coding all the living long days...</Text>
-        </View>
-      </View>
-    </TouchableWithoutFeedback>
-  </View>
-);
+EventCard.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
+  event: PropTypes.object.isRequired,
+};
 
 const padding = 16;
 const { width } = Dimensions.get('window');
@@ -60,7 +83,7 @@ const styles = StyleSheet.create({
     marginBottom: 2,
   },
   dayText: {
-    // justifyContent: 'flex-start',
+    
   },
   eventInfo: {
     justifyContent: 'space-between',

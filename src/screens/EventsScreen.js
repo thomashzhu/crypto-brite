@@ -1,15 +1,27 @@
 import React, { Component } from 'react';
-import { StyleSheet, Platform, NativeModules, SafeAreaView, View, Text, FlatList } from 'react-native';
+import { StyleSheet, View, Text, FlatList } from 'react-native';
+import PropTypes from 'prop-types';
+
 import EventCard from '../components/EventCard';
 
 class EventsScreen extends Component {
   static navigationOptions = {
-    header: null,
+    title: '',
+    headerStyle: {
+      backgroundColor: '#E8787B',
+      borderBottomWidth: 0,
+    },
+    headerTintColor: '#FFF',
   };
 
-  renderEvent = ({ index }) => {
+  renderEvent = ({ post, index }) => {
     if (index >= 1) {
-      return <EventCard />;
+      return (
+        <EventCard
+          event={post}
+          navigation={this.props.navigation}
+        />
+      );
     }
 
     return (
@@ -17,7 +29,10 @@ class EventsScreen extends Component {
         
         <View style={styles.header}>
           <Text style={styles.introText}>What{'\''}s good in</Text>
-          <Text style={styles.locationText}>San Francisco</Text>
+          
+          <View style={styles.locationContainer}>
+            <Text style={styles.locationText}>San Francisco</Text>
+          </View>
         </View>
 
         <View style={styles.headerBackground} />
@@ -29,10 +44,16 @@ class EventsScreen extends Component {
     <FlatList
       data={[{}, {}, {}, {}, {}, {}, {}]}
       keyExtractor={(event, index) => index}
-      renderItem={({ index }) => this.renderEvent({ index })}
+      renderItem={({ item: post, index }) => this.renderEvent({ post, index })}
     />
   );
 }
+
+EventsScreen.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
 const padding = 16;
 const headerHeight = 136;
@@ -49,21 +70,19 @@ const styles = StyleSheet.create({
     zIndex: -1000,
   },
   introText: {
-    flex: 1,
-    height: headerHeight / 3,
     fontSize: 16,
     color: '#FFF',
+  },
+  locationContainer: {
+    flex: 1,
+    alignContent: 'center',
     justifyContent: 'center',
-    alignItems: 'center',
   },
   locationText: {
-    flex: 2,
     fontWeight: '200',
     fontSize: 38,
     textDecorationLine: 'underline',
     color: '#FFF',
-    justifyContent: 'center',
-    alignItems: 'center',
   },
 });
 
