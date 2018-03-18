@@ -19,7 +19,6 @@ class QRCodeScreen extends Component {
     }
   }
 
-
   render = () => (
     <SafeAreaView style={styles.safeAreaView}>
       <ModalHeader
@@ -34,6 +33,7 @@ class QRCodeScreen extends Component {
             <Text style={styles.headerButton}>Share</Text>
           </TouchableOpacity>
         )}
+        />
     <View style={styles.qrCodeContainer}>
       <QRCode
         size={size}
