@@ -9,7 +9,7 @@
       "price": 50,
       "description": "We love Selena",
       "venue": {
-        "date": "Saturday, March 14",
+        "date": "Saturday, March 14, 2018",
         "time": {
           "start": "21:30",
           "end": "1:30"
@@ -27,7 +27,7 @@
       "price": 50,
       "description": "We love Selena",
       "venue": {
-        "date": "Saturday, March 19",
+        "date": "Saturday, March 19, 2018",
         "time": {
           "start": "21:30",
           "end": "1:30"
@@ -45,7 +45,7 @@
       "price": 50,
       "description": "We love Selena",
       "venue": {
-        "date": "Saturday, March 23",
+        "date": "Saturday, March 23, 2018",
         "time": {
           "start": "21:30",
           "end": "1:30"
@@ -63,7 +63,7 @@
       "price": 50,
       "description": "We love Selena",
       "venue": {
-        "date": "Saturday, March 5",
+        "date": "Saturday, March 5, 2018",
         "time": {
           "start": "21:30",
           "end": "1:30"
@@ -81,7 +81,7 @@
       "price": 50,
       "description": "We love Selena",
       "venue": {
-        "date": "Saturday, March 24",
+        "date": "Saturday, March 24, 2018",
         "time": {
           "start": "21:30",
           "end": "1:30"
@@ -99,7 +99,7 @@
       "price": 50,
       "description": "We love Selena",
       "venue": {
-        "date": "Saturday, March 17",
+        "date": "Saturday, March 17, 2018",
         "time": {
           "start": "21:30",
           "end": "1:30"
@@ -117,7 +117,7 @@
       "price": 50,
       "description": "We love Selena",
       "venue": {
-        "date": "Saturday, March 17",
+        "date": "Saturday, March 17, 2018",
         "time": {
           "start": "21:30",
           "end": "1:30"
