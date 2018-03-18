@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 
 import EventCard from '../components/common/EventCard';
 
+const data = require('../data.json');
+
 class EventsScreen extends Component {
   static navigationOptions = {
     title: 'CRYPTO BRITE',
@@ -42,7 +44,7 @@ class EventsScreen extends Component {
 
   render = () => (
     <FlatList
-      data={[{}, {}, {}, {}, {}, {}, {}]}
+      data={data.events}
       keyExtractor={(event, index) => index}
       renderItem={({ item: event, index }) => this.renderEvent({ event, index })}
     />

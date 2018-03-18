@@ -17,6 +17,8 @@ export default class App extends React.Component {
   constructor(props){
     super(props);
 
+    console.log(props.navigation.state.params.event);
+
     this.state = {
       screen: null,
       description: ''
