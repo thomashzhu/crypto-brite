@@ -99,7 +99,7 @@ export default class App extends React.Component {
 
                 </SimpleLineIcons>
                 <View style={styles.subDetailColumnContainer}>
-                  <Text style={styles.detailMainText}>${event.price}</Text>
+                  <Text style={styles.detailMainText}>{event.price}</Text>
                   <Text style={styles.detailSubText}>on Crypto-Brite</Text>
                 </View>
               </View>
