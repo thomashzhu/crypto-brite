@@ -1,9 +1,20 @@
 import React from 'react';
 import { StyleSheet, Text, View, ScrollView, Image } from 'react-native';
 import { SimpleLineIcons } from '@expo/vector-icons';
+import MapView from 'react-native-maps';
 
 
 export default class App extends React.Component {
+
+  constructor(props){
+    super(props);
+
+    this.state = {
+      screen: null,
+      description: ''
+    };
+  }
+
   render() {
     return (
       <ScrollView style={styles.mainContainer}>
@@ -34,7 +45,7 @@ export default class App extends React.Component {
             </SimpleLineIcons>
             <View style={styles.subDetailColumnContainer}>
               <Text style={styles.detailMainText}>Saturday, March 17</Text>
-              <Text style={styles.detailSubText}>9:30 PM - 130 AM PDT</Text>
+              <Text style={styles.detailSubText}>9:30 PM - 1:30 AM PDT</Text>
             </View>
           </View>
 
@@ -80,7 +91,18 @@ It only took a few short but extremely exciting years for Selena to earn her nic
         {/* aboutEventContainer End */}
 
         <View style={styles.locationContainer}>
-
+          <Text style={styles.locationTitleStyle}>Location</Text>
+          <Text style={styles.locationSubTitleStyle}>Love And Propaganda</Text>
+          <View style={styles.mapImageContainer}>
+            <Image
+              source={{ uri: 'http://joomly.net/frontend/web/images/googlemap/map.png' }}
+                style={{
+                  height: 200,
+                  width: '100%'
+                }}
+                resizeMode='cover'
+            />
+          </View>
         </View>
         {/* locationContainer End */}
 
@@ -162,11 +184,28 @@ const styles = StyleSheet.create({
   locationContainer: {
     flexGrow: 2,
     width: '100%',
-    height: 300,    
-
-    backgroundColor: 'black'
+    height: 500,    
   },
-
+  locationTitleStyle: {
+    fontSize: 15,
+    marginTop: 30,
+    marginBottom: 10,
+    marginLeft: 15,
+    marginRight: 15,
+  },
+  locationSubTitleStyle: {
+    fontSize: 15,
+    marginTop: 30,
+    marginBottom: 10,
+    marginLeft: 15,
+    marginRight: 15,
+    fontWeight: 'bold'
+  },
+  mapImageContainer: {
+    padding: 10,
+    width: '100%',
+    height: 275,
+  }
   // location information end
 
 
