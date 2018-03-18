@@ -11,7 +11,7 @@ const EventsTabIcon = ({ tintColor }) => (
   <SimpleLineIcons
     name="calendar"
     color={tintColor}
-    size={Platform.OS === 'ios' ? 22 : 25}
+    size={Platform.OS === 'ios' ? 22 : 22}
   />
 );
 EventsTabIcon.propTypes = {
@@ -22,7 +22,7 @@ const AccountTabIcon = ({ tintColor }) => (
   <SimpleLineIcons
     name="user"
     color={tintColor}
-    size={Platform.OS === 'ios' ? 22 : 25}
+    size={Platform.OS === 'ios' ? 22 : 22}
   />
 );
 AccountTabIcon.propTypes = {

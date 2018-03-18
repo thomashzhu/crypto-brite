@@ -39,6 +39,29 @@ export default class App extends React.Component {
     this.props.navigation.navigate('payment', { event });
   }
 
+  renderTicketButton = () => {
+    const { event } = this.props.navigation.state.params;
+
+    if (event.transaction) {
+      return null;
+    }
+
+    return (
+      <View style={styles.purchaseContainer}>
+        <TouchableOpacity>
+          <Button
+            onPress={this.onPurchaseButtonPress}
+            title='Tickets'
+            color='white'
+            backgroundColor='#E8787B'
+            rounded
+          />
+        </TouchableOpacity>
+      </View>
+    );
+  }
+
+
   render() {
     const event = this.props.navigation.state.params.event;
     console.log(event);
@@ -133,17 +156,7 @@ export default class App extends React.Component {
           </ScrollView>
           {/* scrollView End */}
 
-          <View style={styles.purchaseContainer}>
-            <TouchableOpacity>
-              <Button
-                onPress={this.onPurchaseButtonPress}
-                title='Tickets'
-                color='white'
-                backgroundColor='#E8787B'
-                rounded
-              />
-            </TouchableOpacity>
-          </View>
+          {this.renderTicketButton()}
 
         </View>
     );

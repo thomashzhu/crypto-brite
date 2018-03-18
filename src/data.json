@@ -17,7 +17,8 @@
         "address": "1600 Holloway Avenue, San Francisco, CA 94132",
         "name": "Student Life Center"
       },
-      "isFavorited": false
+      "isFavorited": false,
+      "transaction": null
     },
     {
       "id": "2",
@@ -36,7 +37,8 @@
         "address": "1600 Holloway Avenue, San Francisco, CA 94132",
         "name": "Student Life Center"
       },
-      "isFavorited": false
+      "isFavorited": false,
+      "transaction": null
     },
     {
       "id": "3",
@@ -55,7 +57,8 @@
         "address": "1600 Holloway Avenue, San Francisco, CA 94132",
         "name": "Student Life Center"
       },
-      "isFavorited": false
+      "isFavorited": false,
+      "transaction": null
     },
     {
       "id": "4",
@@ -74,7 +77,8 @@
         "address": "1600 Holloway Avenue, San Francisco, CA 94132",
         "name": "Student Life Center"
       },
-      "isFavorited": false
+      "isFavorited": false,
+      "transaction": null
     },
     {
       "id": "5",
@@ -93,7 +97,8 @@
         "address": "1600 Holloway Avenue, San Francisco, CA 94132",
         "name": "Student Life Center"
       },
-      "isFavorited": false
+      "isFavorited": false,
+      "transaction": null
     },
     {
       "id": "6",
@@ -112,7 +117,8 @@
         "address": "1600 Holloway Avenue, San Francisco, CA 94132",
         "name": "Student Life Center"
       },
-      "isFavorited": false
+      "isFavorited": false,
+      "transaction": null
     },
     {
       "id": "7",
@@ -131,7 +137,8 @@
         "address": "1600 Holloway Avenue, San Francisco, CA 94132",
         "name": "Student Life Center"
       },
-      "isFavorited": false
+      "isFavorited": false,
+      "transaction": null
     }
   ]
 }

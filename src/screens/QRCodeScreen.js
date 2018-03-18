@@ -10,7 +10,7 @@ class QRCodeScreen extends Component {
     const { event } = this.props.navigation.state.params;
     try {
       event.transaction = {
-        isConfirmed: true,
+        isConfirmed: false,
       };
       await AsyncStorage.setItem(event.id, JSON.stringify(event));
       DeviceEventEmitter.emit('setMyEventsUpdated');

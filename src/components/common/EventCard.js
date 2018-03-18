@@ -22,7 +22,7 @@ class EventCard extends Component {
 
   onFavoriteButtonPress = async () => {
     const { isFavorited } = this.state;
-    const { event } = this.props;
+    const { event, onFavoriteButtonPressEmit } = this.props;
 
     try {
       event.isFavorited = !isFavorited;
@@ -31,12 +31,56 @@ class EventCard extends Component {
       } else {
         await AsyncStorage.removeItem(event.id);
       }
-      DeviceEventEmitter.emit('setMyEventsUpdated');
+      onFavoriteButtonPressEmit();
     } catch (error) {
       // Error saving data
     }
 
     this.setState({ isFavorited: !isFavorited });
+  }
+
+  renderCustomActionButton = () => {
+    const { event } = this.props;
+
+    // console.log("TRANSACTION", event.transaction);
+
+    if (event.transaction) {
+      if (!event.transaction.isConfirmed) {
+        return (
+          <TouchableOpacity onPress={() => {}}>
+            <View style={styles.circleButton}>
+              <SimpleLineIcons
+                name="wallet"
+                size={24}
+              />
+            </View>
+          </TouchableOpacity>
+        );
+      } else {
+        return (
+          <TouchableOpacity onPress={() => {}}>
+            <View style={styles.circleButton}>
+              <SimpleLineIcons
+                name="camera"
+                size={24}
+              />
+            </View>
+          </TouchableOpacity>
+        );
+      }
+    } else {
+      return (
+        <TouchableOpacity onPress={this.onFavoriteButtonPress}>
+          <View style={styles.circleButton}>
+            <SimpleLineIcons
+              name="heart"
+              color={this.state.isFavorited ? 'red' : null}
+              size={24}
+            />
+          </View>
+        </TouchableOpacity>
+      );
+    }
   }
 
   render = () => {
@@ -74,15 +118,7 @@ class EventCard extends Component {
                 </View>
               </TouchableOpacity>
 
-              <TouchableOpacity onPress={this.onFavoriteButtonPress}>
-                <View style={styles.circleButton}>
-                  <SimpleLineIcons
-                    name="heart"
-                    color={this.state.isFavorited ? 'red' : null}
-                    size={24}
-                  />
-                </View>
-              </TouchableOpacity>
+              {this.renderCustomActionButton()}
             </View>
           </View>
         </TouchableWithoutFeedback>
@@ -114,6 +150,7 @@ EventCard.propTypes = {
     navigate: PropTypes.func.isRequired,
   }).isRequired,
   event: PropTypes.object.isRequired,
+  onFavoriteButtonPressEmit: PropTypes.func.isRequired,
 };
 
 const padding = 16;

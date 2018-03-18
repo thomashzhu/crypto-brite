@@ -27,7 +27,6 @@ class EventsScreen extends Component {
       this.loadEvents();
     });
 
-    // AsyncStorage.clear();
     this.loadEvents();
   }
 
@@ -51,6 +50,10 @@ class EventsScreen extends Component {
     <EventCard
       event={event}
       navigation={this.props.navigation}
+      onFavoriteButtonPressEmit={() => {
+        this.loadEvents();
+        DeviceEventEmitter.emit('setEventsUpdated', { updatedEvent: event });
+      }}
     />
   );
 
