@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, Image } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Image, TouchableOpacity } from 'react-native';
 import { SimpleLineIcons } from '@expo/vector-icons';
+import { Button } from 'react-native-elements'
 import MapView from 'react-native-maps';
 
 
@@ -18,7 +19,8 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       screen: null,
-      description: ''
+      description: '',
+      isPaid: true
     };
   }
 
@@ -27,105 +29,121 @@ export default class App extends React.Component {
     console.log(event);
 
     return (
-      <ScrollView style={styles.mainContainer}>
-
-        <View style={styles.bannerImageContainer}>
-          <Image
-            source={{ uri: event.image }}
-              style={{
-                flex: 1,
-                height: 200,
-                width: '100%'
-              }}
-              resizeMode='cover'
-          />
-        </View>
-        {/* bannerImageContainer End */}
-
-        <View style={styles.generalInformationContainer}>
-          <Text style={styles.generalInformationHeaderTitleStyle}>{event.name}</Text>
-          <Text style={styles.byTextStyle}>{event.type}</Text>
-          
-          <View style={styles.detailContainer}>
-            <SimpleLineIcons 
-              name='calendar'
-              size={25}
-            >
-
-            </SimpleLineIcons>
-            <View style={styles.subDetailColumnContainer}>
-              <Text style={styles.detailMainText}>{event.venue['date']}</Text>
-              <Text style={styles.detailSubText}>{event.venue['time'].start} - {event.venue['time'].end}</Text>
+      <View style={styles.mainContainer}>
+          <ScrollView style={styles.scrollViewContainer}>
+            <View style={styles.bannerImageContainer}>
+              <Image
+                source={{ uri: event.image }}
+                  style={{
+                    flex: 1,
+                    height: 200,
+                    width: '100%'
+                  }}
+                  resizeMode='cover'
+              />
             </View>
-          </View>
+            {/* bannerImageContainer End */}
 
-          <View style={styles.detailContainer}>
-            <SimpleLineIcons 
-              name='location-pin'
-              size={25}
-            >
+            <View style={styles.generalInformationContainer}>
+              <Text style={styles.generalInformationHeaderTitleStyle}>{event.name}</Text>
+              <Text style={styles.byTextStyle}>{event.type}</Text>
+              
+              <View style={styles.detailContainer}>
+                <SimpleLineIcons 
+                  name='calendar'
+                  size={25}
+                >
 
-            </SimpleLineIcons>
-            <View style={styles.subDetailColumnContainer}>
-              <Text style={styles.detailMainText}>{event.venue.name}</Text>
-              <Text style={styles.detailSubText}>{event.venue.address}</Text>
+                </SimpleLineIcons>
+                <View style={styles.subDetailColumnContainer}>
+                  <Text style={styles.detailMainText}>{event.venue['date']}</Text>
+                  <Text style={styles.detailSubText}>{event.venue['time'].start} - {event.venue['time'].end}</Text>
+                </View>
+              </View>
+
+              <View style={styles.detailContainer}>
+                <SimpleLineIcons 
+                  name='location-pin'
+                  size={25}
+                >
+
+                </SimpleLineIcons>
+                <View style={styles.subDetailColumnContainer}>
+                  <Text style={styles.detailMainText}>{event.venue.name}</Text>
+                  <Text style={styles.detailSubText}>{event.venue.address}</Text>
+                </View>
+              </View>
+
+              <View style={styles.detailContainer}>
+                <SimpleLineIcons 
+                  name='tag'
+                  size={25}
+                >
+
+                </SimpleLineIcons>
+                <View style={styles.subDetailColumnContainer}>
+                  <Text style={styles.detailMainText}>${event.price}</Text>
+                  <Text style={styles.detailSubText}>on Crypto-Brite</Text>
+                </View>
+              </View>
+
             </View>
-          </View>
+            {/* generalInformationContainer End */}
 
-          <View style={styles.detailContainer}>
-            <SimpleLineIcons 
-              name='tag'
-              size={25}
-            >
-
-            </SimpleLineIcons>
-            <View style={styles.subDetailColumnContainer}>
-              <Text style={styles.detailMainText}>${event.price}</Text>
-              <Text style={styles.detailSubText}>on Crypto-Brite</Text>
+            <View style={styles.aboutEventContainer}>
+                <Text style={styles.aboutTitleStyle}>About</Text>
+                <Text 
+                style={styles.descriptionStyle}
+                numberOfLines= {4}
+                ellipsizeMode='tail'
+                >{event.description}</Text>
             </View>
+            {/* aboutEventContainer End */}
+
+            <View style={styles.locationContainer}>
+              <Text style={styles.locationTitleStyle}>Location</Text>
+              <Text style={styles.locationSubTitleStyle}>{event.venue.name}</Text>
+              <View style={styles.mapImageContainer}>
+                <Image
+                  source={{ uri: 'http://joomly.net/frontend/web/images/googlemap/map.png' }}
+                    style={{
+                      height: 200,
+                      width: '100%'
+                    }}
+                    resizeMode='cover'
+                />
+              </View>
+            </View>
+            {/* locationContainer End */}
+          </ScrollView>
+          {/* scrollView End */}
+
+          <View style={styles.purchaseContainer}>
+            <TouchableOpacity>
+              <Button
+                // onPress={}
+                title='Tickets'
+                color='white'
+                backgroundColor='#E8787B'
+                rounded= 'true'
+              />
+            </TouchableOpacity>
           </View>
 
         </View>
-        {/* generalInformationContainer End */}
-
-        <View style={styles.aboutEventContainer}>
-            <Text style={styles.aboutTitleStyle}>About</Text>
-            <Text 
-            style={styles.descriptionStyle}
-            numberOfLines= {4}
-            ellipsizeMode='tail'
-            >{event.description}</Text>
-        </View>
-        {/* aboutEventContainer End */}
-
-        <View style={styles.locationContainer}>
-          <Text style={styles.locationTitleStyle}>Location</Text>
-          <Text style={styles.locationSubTitleStyle}>{event.venue.name}</Text>
-          <View style={styles.mapImageContainer}>
-            <Image
-              source={{ uri: 'http://joomly.net/frontend/web/images/googlemap/map.png' }}
-                style={{
-                  height: 200,
-                  width: '100%'
-                }}
-                resizeMode='cover'
-            />
-          </View>
-        </View>
-        {/* locationContainer End */}
-
-      </ScrollView>
-      // mainContainer End
     );
   }
 }
 
 const styles = StyleSheet.create({
   mainContainer: {
+    flex: 1
+  },
+
+  scrollViewContainer: {
     flexGrow: 1,
   },
 
-  
   bannerImageContainer: {
     flex: 1,
     width: '100%',
@@ -211,8 +229,12 @@ const styles = StyleSheet.create({
     padding: 10,
     width: '100%',
     height: 275,
-  }
+  },
   // location information end
 
+  purchaseContainer: {
+    width: '100%',
+    height: 50,
+  }
 
 });
