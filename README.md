@@ -20,21 +20,21 @@ We all have started learning React Native together at [MobileSpace Season 2](htt
 
 ### Thomas Zhu - _Front End_ 
 <a href="https://github.com/thomashzhu"><img src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png" width="40"/></a>
-<a href="https://www.linkedin.com/in/thomashzhu/"><img src="https://pbs.twimg.com/profile_images/747434404616667137/ZJG5ppiy.jpg" width="40"/></a>
+<a href="https://www.linkedin.com/in/thomashzhu/"><img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/square-linkedin-48.png" width="40"/></a>
 
 
 ### Ryan Liszewski - _Full Stack_ 
 <a href="https://github.com/ryanliszewski"><img src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png" width="40"/></a>
-<a href="https://www.linkedin.com/in/ryanliszewski/"><img src="https://pbs.twimg.com/profile_images/747434404616667137/ZJG5ppiy.jpg" width="40"/></a>
+<a href="https://www.linkedin.com/in/ryanliszewski/"><img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/square-linkedin-48.png" width="40"/></a>
 
 
 ### Nicholas Szeto - _Front End_ 
 <a href="https://github.com/niszeto"><img src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png" width="40"/></a>
-<a href="https://www.linkedin.com/in/thomashzhu/"><img src="https://pbs.twimg.com/profile_images/747434404616667137/ZJG5ppiy.jpg" width="40"/></a>
+<a href="https://www.linkedin.com/in/thomashzhu/"><img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/square-linkedin-48.png" width="40"/></a>
 
 ### Sukhjit Singh - _Full Stack_
 <a href="https://github.com/sukhjitsingh"><img src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png" width="40"/></a>
-<a href="https://www.linkedin.com/in/iamsukhjitsingh/"><img src="https://pbs.twimg.com/profile_images/747434404616667137/ZJG5ppiy.jpg" width="40"/></a>
+<a href="https://www.linkedin.com/in/iamsukhjitsingh/"><img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/square-linkedin-48.png" width="40"/></a>
 
 ## Prizes
 
